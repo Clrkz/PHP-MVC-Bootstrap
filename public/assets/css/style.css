@@ -1,0 +1,50 @@
+fieldset {
+  margin-left: 2px;
+  margin-right: 2px;
+  padding-top: 0.35em;
+  padding-bottom: 0.625em;
+  padding-left: 0.75em;
+  padding-right: 0.75em;
+  border: 1px solid gray;
+  border-radius: 3%;
+}
+
+legend {
+  font-size: 16px;
+  font-weight: bold;
+  color: blue;
+}
+
+.tab-wrapper .nav-link.active,
+.nav-item.active {
+  color: rgb(0 123 255);
+  border-bottom: 1px solid rgb(0 123 255) !important;
+}
+
+.nav-tabs.flex-column .nav-item.show .nav-link,
+.nav-tabs.flex-column .nav-active.active {
+  border-left: 3px solid #0068e1;
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}
+
+.tab-content-title {
+  margin-top: 0;
+  margin-bottom: 20px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid #d2d6de;
+}
+
+.tab-content-hr {
+  border-bottom: 1px solid #d2d6de;
+}
+
+.hidden {
+  display: none;
+}
+
+.uppercase {
+  text-transform: uppercase;
+}

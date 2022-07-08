@@ -1,0 +1,4 @@
+.env
+vendor
+refresh_autoload.bat
+start.bat
