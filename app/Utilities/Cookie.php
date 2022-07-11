@@ -16,9 +16,11 @@ class Cookie
      * @param string $key
      * @return void
      */
-    public static function delete($key)
+    public static function delete($key,)
     {
-        setcookie($key, '', time() - 1);
+        if (self::exists($key)) {
+            setcookie($key, '', time() - 1, '/');
+        }
     }
 
     /**

@@ -18,9 +18,11 @@ class AuthController extends Controller
         session_unset();
         session_destroy();
 
-        if (Cookie::exists('uid')) {
-            Cookie::delete('uid');
-        }
+        // if (Cookie::exists('uid')) {
+        //     Cookie::delete('uid');
+        // }
+        Cookie::delete('uid');
+        // Cookie::put("uid", '', time() - 1, '/', 'Strict', false, true);
 
         // response()->redirect('/');
         response()->redirect(url('login'));
@@ -94,9 +96,7 @@ class AuthController extends Controller
         $response['status'] = 1;
         $response['message'] = "Login successful.";
 
-        if (Cookie::exists('ref')) {
-            Cookie::delete('ref');
-        }
+        Cookie::delete('ref');
 
         response()->json($response);
     }
