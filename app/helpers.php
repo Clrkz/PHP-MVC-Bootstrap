@@ -148,3 +148,8 @@ function escape($string)
     // return htmlspecialchars($string, ENT_QUOTES | ENT_HTML5, 'UTF-8');
     // return htmlentities($string, ENT_QUOTES | ENT_HTML5, 'UTF-8');
 }
+
+function config($config)
+{
+    return  (object) include('../config/' . $config . '.php');
+}
