@@ -6,13 +6,13 @@ class Utility
 {
     public static function alphaNumericOnly($data)
     {
-        $str = preg_replace("/[^a-zA-Z0-9]+/", "", $data);
-        if (strlen($str) < 5) {
-            return "";
-        }
-        return $str;
+        return preg_replace("/[^a-zA-Z0-9]+/", "", $data);
     }
 
+    public static function numericOnly($data)
+    {
+        return preg_replace("/[^0-9]/", "", $data);
+    }
 
     public static function nullEmptyArray($array)
     {
@@ -78,5 +78,61 @@ class Utility
     public static function numberFormat($number)
     {
         return number_format($number, 2, '.', ',');
+    }
+
+    public static function cleanString($data)
+    {
+        if (is_array($data)) {
+            foreach ($data as $key => $value) {
+                if (is_array($value)) {
+                    $data[$key]  =  self::cleanString($value);
+                } else {
+                    $data[$key] = self::removeNonAscii(self::removeExtraSpace(trim($data[$key])));
+                }
+            }
+            return $data;
+        } else {
+            return  self::removeNonAscii(self::removeExtraSpace(trim($data)));
+        }
+    }
+
+    public static function removeNonAscii($string)
+    {
+        return preg_replace('/[^\r\n[:print:]]/', '', $string);
+        // return  preg_replace('/[\x00-\x1F\x7F\xA0]/u', '', $string); best
+        // return preg_replace('/[\x00-\x1F\x80-\xFF]/', '', $string);
+    }
+
+    public static function removeExtraSpace($data)
+    {
+        // return  preg_replace('/\s+/', ' ', $data);
+        return preg_replace('/\h+/', ' ', $data);
+        // return preg_replace('/\x20+/', ' ', $data);
+    }
+
+    public static function curl($array_data)
+    {
+        if (empty($array_data['uri'])) {
+            return "No uri";
+        }
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_URL, $array_data['uri']);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+        curl_setopt($ch, CURLOPT_POST, 1);
+        curl_setopt($ch, CURLOPT_POSTFIELDS, empty($array_data['parameters']) ? null : $array_data['parameters']);
+        if (!empty($array_data['header']) > 0) {
+            curl_setopt($ch, CURLOPT_HTTPHEADER, $array_data['header']);
+        }
+
+        return curl_exec($ch);
+    }
+
+    public static function isValidEmail($email)
+    {
+        if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
+            return $email;
+        } else {
+            return null;
+        }
     }
 }
