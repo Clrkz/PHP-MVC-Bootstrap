@@ -23,7 +23,8 @@
     "gumlet/php-image-resize": "2.0.*",
     "firebase/php-jwt": "dev-main",
     "fakerphp/faker": "2.x-dev",
-    "vlucas/phpdotenv": "5.4.x-dev"
+    "vlucas/phpdotenv": "5.4.x-dev",
+    "peppeocchi/php-cron-scheduler": "dev-master"
   },
   "config": {
     "platform-check": false

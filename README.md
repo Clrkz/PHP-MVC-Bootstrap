@@ -1,10 +1,11 @@
-# PHP-MVC-Bootstrap
+# Clrkz PHP Framework
 
-My PHP Framework  
--ENV  
--Route  
--AdminLTE  
--CSRF  
--JWT Token  
--Mailer  
--Asset Versioning
+- MVC
+- ENV
+- Route
+- AdminLTE
+- CSRF
+- JWT Token
+- Mailer
+- Asset Versioning
+- Scheduler

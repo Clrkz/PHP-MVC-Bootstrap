@@ -2,3 +2,4 @@
 vendor
 refresh_autoload.bat
 start.bat
+public/storage/logs/*
